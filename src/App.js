@@ -5,6 +5,7 @@ import Landing from './components/Landing';
 import Categories from './components/Categories';
 import Exercises from './components/Exercises';
 import Plan from './components/Plan';
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Categories />
           <Exercises />
           <Plan />
+          <Footer />
         </Box>
       </div>
     </>

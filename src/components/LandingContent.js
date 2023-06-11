@@ -6,7 +6,7 @@ import FilterIcon from './../assets/icons/filter-icon.png'
 
 const LandingContent = () => {
   return (
-    <div className='flex flex-col items-center px-10 sm:px-4'>
+    <div className='flex flex-col items-center px-10 mt-10 sm:mt-15 sm:px-4 '>
       <h1 className='text-[26px] lg:text-[36px] xl:text-[44px] 2xl:text-[52px] text-white text-center font-bold'>
         INSPIRATION FOR YOUR NEXT WORKOUT
       </h1>
@@ -80,14 +80,15 @@ const LandingContent = () => {
             Document your progress
           </p>
         </div>
-      </div>
-      <button className='border-none bg-[#c6c6c6] rounded-l p-3 my-10 2xl:my-6 text-white drop-shadow-md cursor-pointer 
+      </div> 
+      <a href='#exercises'
+      className='border-none bg-[#c6c6c6] rounded-l p-3 my-10 2xl:my-6 text-white drop-shadow-md cursor-pointer text-center
       sm:my-4 
       lg:my-10
       xl:my-14
       xl:w-[400px]'>
         Explore Exercises
-      </button>
+      </a>
     </div>
   )
 }

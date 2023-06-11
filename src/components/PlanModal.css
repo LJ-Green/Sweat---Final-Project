@@ -29,3 +29,9 @@
 .display-none {
   display: none;
 }
+
+.exercise__modal {
+  background-color: white;
+  border-radius: 10px;
+  margin: 40px;
+}

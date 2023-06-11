@@ -11,7 +11,7 @@ const Landing = () => {
         xl:w-[500px]
         2xl:w-[700px]'>
           <img
-            className='p-5 h-[350px] rounded-2xl sm:mt-5 
+            className='p-5 h-[350px] rounded-2xl mt-12 sm:mt-20 
             lg:h-[550px] 
             xl:h-[750px] xl:my-10 xl:ml-10'
             src={Hero}

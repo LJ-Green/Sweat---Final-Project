@@ -26,7 +26,7 @@ const Exercises = () => {
             </h1>
             <div className='flex justify-center mb-8'>
               <input
-                className='mt-6 bg-[#cfcfcf] rounded text-center'
+                className='mt-6 bg-[#cfcfcf] rounded text-center sm:text-[22px]'
                 placeholder='Search'
               />
             </div>
