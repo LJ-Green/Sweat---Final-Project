@@ -1,19 +1,21 @@
 import { Box } from '@mui/material'
-
 import ExerciseCard from './ExerciseCard';
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
 import { Pagination, Navigation } from "swiper";
+import { useState } from 'react';
 
 
-const Exercises = () => {
+const Exercises = ({ searchExercises, setSearchExercises, sampleData }) => {
+
+  function handleSearch(e) {
+    let filterd = sampleData.filter(item => (item.bodyPart.includes(e.target.value) 
+    || item.equipment.includes(e.target.value) || item.name.includes(e.target.value)) || item.target.includes(e.target.value))
+    setSearchExercises(filterd)
+  }
+
 
   return (
     <>
@@ -26,26 +28,21 @@ const Exercises = () => {
             </h1>
             <div className='flex justify-center mb-8'>
               <input
+                onChange={(e) => handleSearch(e)}
                 className='mt-6 bg-[#cfcfcf] rounded text-center sm:text-[22px]'
                 placeholder='Search'
               />
             </div>
           </div>
-          <div className='flex justify-center'>
-            <div className='grid grid-cols-2 grid-rows-4 w-[80%] h-[800px]'>
-            <Swiper 
-              pagination={{
-                type: "fraction",
-              }}
-              navigation={true}
-              modules={[Pagination]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                  <ExerciseCard />
-              </SwiperSlide>
-            </Swiper>
-                </div>
+          <div className='grid grid-cols-2 grid-rows-4 gap-4 mx-auto place-items-center w-[80%] h-[800px]'>
+
+            {searchExercises.map((exercise, index) => (
+              <ExerciseCard exercise={exercise} />
+
+              //   searchExercises.slice(11*(pageNumber -1 ), 11 + ( 12 * (pageNumber -1)).map(...
+              //   but would make more sense to have page number 1 having a value of 0 because then its just:
+              //   slice(11*(pageNumber), 11+(12*(pageNumber)))
+            ))}
           </div>
         </div>
       </Box>

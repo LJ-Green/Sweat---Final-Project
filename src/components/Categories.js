@@ -5,7 +5,31 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from 'swiper';
 
-const Categories = ({ bodyPart }) => {
+const Categories = ({ setSearchExercises, sampleData }) => {
+
+  const [activeCategory, setActiveCategory] = useState({})
+
+  function handleClick(item) {
+    let filterd = sampleData.filter(obj => obj.bodyPart === item.name)
+    setSearchExercises(filterd)
+  }
+
+
+  const sampleCategories = [
+    {
+      name: "back",
+      icon: ""
+    },
+    "cardio",
+    "chest",
+    "lower arms",
+    "lower legs",
+    "neck",
+    "shoulders",
+    "upper arms",
+    "upper legs",
+    "waist"
+  ]
 
   const options = {
     method: 'GET',
@@ -15,7 +39,7 @@ const Categories = ({ bodyPart }) => {
       'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
     }
   };
-  
+
   // const fetchData = async () => {
   //   try {
   //     const response = await axios.request(options);
@@ -29,8 +53,7 @@ const Categories = ({ bodyPart }) => {
   //   fetchData()
   // }, [])
 
-  const [data, setData] = useState ([])
-  console.log(data)
+  const [data, setData] = useState([])
   return (
     <>
       <div className='bg-[#7d7d7d] border-t-[8px] border-t-[#ff5c00] h-[180px]
@@ -60,27 +83,28 @@ const Categories = ({ bodyPart }) => {
           lg:h-[220px]
           2xl:h-[300px]
           '>
-                {data.map((item, index) => (
+                {sampleCategories.map((item, index) => (
 
-                <SwiperSlide
-                key={index}
-                >
-                  <div className='border-4 w-[80px] h-[80px] rounded-full drop-shadow-md
+                  <SwiperSlide
+                    onClick={() => handleClick(item)}
+                    key={index}
+                  >
+                    <div className='border-4 w-[80px] h-[80px] rounded-full drop-shadow-md
             sm:w-[120px] sm:h-[120px]
             lg:w-[180px] lg:h-[180px]
             2xl:w-[250px] 2xl:h-[250px]
             '>
-                    <p className='flex justify-center text-center p-2 mt-6 text-[10px] text-white
+                      <p className='flex justify-center text-center p-2 mt-6 text-[10px] text-white
               sm:mt-14 sm:text-[16px]
               lg:mt-[100px] lg:text-[24px]
               2xl:mt-[140px] 2xl:text-[30px]
               '>
-                      {item}
-                    </p>
-                  </div>
-                </SwiperSlide>
+                        {item.name}
+                      </p>
+                    </div>
+                  </SwiperSlide>
                 ))}
-                  </div>
+              </div>
             </Swiper>
           </div>
         </div>
